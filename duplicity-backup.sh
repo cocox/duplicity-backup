@@ -251,7 +251,7 @@ email_logfile()
             EMAIL_FROM=${EMAIL_FROM:+"-r ${EMAIL_FROM}"}
             cat ${LOGFILE} | ${MAILCMD} -s """${EMAIL_SUBJECT}""" $EMAIL_FROM ${EMAIL_TO}
 	  elif [ "$MAIL" = "mail" ]; then
-	    cat ${LOGFILE} | ${MAILCMD} -s """${EMAIL_SUBJECT}""" $EMAIL_FROM ${EMAIL_TO} -- -f ${EMAIL_FROM}
+	    cat ${LOGFILE} | ${MAILCMD} -s """${EMAIL_SUBJECT}""" $EMAIL_FROM ${EMAIL_TO} -- ${EMAIL_FROM}
 	  fi
           echo -e "Email alert sent to ${EMAIL_TO} using ${MAIL}" >> ${LOGFILE}
       fi
